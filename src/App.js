@@ -1,6 +1,14 @@
 import { Routes, Route, Link } from 'react-router-dom';
+import './App.css';
 
 const Lis = () => {
+
+  const Heading = () => {
+    return(
+      <h2><Link to="/">Subject</Link></h2>
+    )
+  }
+
   let list = [];
   const menu = [
     {id:'1', contLink:"/list/1", title: "111"},
@@ -11,7 +19,8 @@ const Lis = () => {
   }
   return (
     <>
-      {list}
+      <Heading />
+      <ul> {list} </ul>
     </>
   )
 }
@@ -19,10 +28,7 @@ const Lis = () => {
 const Header = () => {
   return (
     <div>
-      <h1><Link to="/test">heading</Link></h1>
-      <ul>
-        <Lis />
-      </ul>
+      <Lis />
     </div>
   )
 }
