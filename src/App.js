@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route, Link } from 'react-router-dom';
+
+const Lis = () => {
+  let list = [];
+  const menu = [
+    {id:'1', contLink:"/list/1", title: "111"},
+    {id:'2', contLink:"/list/2", title: "222"},
+  ]
+  for(let i=0; i < menu.length; i++) {
+    list.push(<li><Link to={menu[i].contLink}>{menu[i].title}</Link></li>);
+  }
+  return (
+    <>
+      {list}
+    </>
+  )
+}
+
+const Header = () => {
+  return (
+    <div>
+      <h1><Link to="/test">heading</Link></h1>
+      <ul>
+        <Lis />
+      </ul>
+    </div>
+  )
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Routes>
+          <Route path="/" element={<Header />}> </Route>
+          <Route path="/list/*" element={<Lis />}> </Route>
+        </Routes>
     </div>
   );
 }
